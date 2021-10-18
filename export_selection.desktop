@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=Krita/PythonPlugin
+X-KDE-Library=export_selection
+X-Python-2-Compatible=false
+Name=Export Selection
+Comment=Export the current selection as png.
