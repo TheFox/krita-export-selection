@@ -18,15 +18,27 @@ class ExportSelection(Extension):
         application = Krita.instance()
         currentDocument = application.activeDocument()
 
+        # Ensure there is an active document.
+        if not currentDocument:
+            print('No active document found.')
+            return
+
         currentLayer = currentDocument.activeNode()
 
-        #filePath = path.dirname(currentDocument.fileName())
+        # Get the selection from the active document.
+        selection = currentDocument.selection()
+
+        # Ensure there is a selection in the document.
+        if selection is None or selection.width() == 0 or selection.height() == 0:
+            print('No selection found.')
+            return
+
         (basePath, ext) = path.splitext(currentDocument.fileName())
 
         items = [
             basePath,
             currentLayer.name(),
-            str(currentLayer.selection().width()) + 'x' + str(currentLayer.selection().height()),
+            str(selection.width()) + 'x' + str(selection.height()),
         ]
         newPath = '_'.join(items) + '.png'
 
