@@ -1,5 +1,4 @@
-from krita import *
-#from PyQt5.QtWidgets import QFileDialog
+from krita import Krita, Extension
 from os import path
 
 class ExportSelection(Extension):
@@ -33,8 +32,6 @@ class ExportSelection(Extension):
 
         application.action('copy_merged').trigger()
         application.action('paste_new').trigger()
-        #application.action('file_save_as').trigger()
-        #application.action('file_close').trigger()
 
         currentDocument = application.activeDocument()
         currentDocument.saveAs(newPath)
